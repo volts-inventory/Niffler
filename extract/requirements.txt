@@ -1,0 +1,2 @@
+pymongo
+curl_cffi

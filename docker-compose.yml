@@ -1,0 +1,45 @@
+version: '3.8'
+
+services:
+  mongo:
+    image: mongo:6.0
+    container_name: mongo-db
+    restart: always
+    networks:
+      - my-network
+    ports:
+      - "27017"
+    volumes:
+      - mongo_data:/data/db
+
+  web:
+    build: ./web
+    container_name: web-server
+    restart: always
+    networks:
+      - my-network
+    ports:
+      - "31415:5000"
+    depends_on:
+      - mongo
+    environment:
+      - PYTHONUNBUFFERED=1
+
+  extract:
+    build: ./extract
+    container_name: extract-job
+    restart: no
+    networks:
+      - my-network
+    depends_on:
+      - mongo
+    volumes:
+      - mongo_data:/data/db
+    environment:
+      - PYTHONUNBUFFERED=1
+
+volumes:
+  mongo_data:
+
+networks:
+  my-network:

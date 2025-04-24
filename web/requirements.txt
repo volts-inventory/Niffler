@@ -1,0 +1,5 @@
+pymongo
+folium
+Flask
+geopy
+gunicorn

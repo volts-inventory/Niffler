@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Seeking Mary</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+  <header class="topbar">
+    <div class="topbar-inner">
+      <div class="site-title">
+        <div class="left">
+          <h1>Seeking Mary</h1>
+          <p>Find cheapest prices per gram for your local shops.</p>
+        </div>
+        <div class="right">
+          <label for="stateSelect" style="font-weight: bold; margin-right: 0.5rem;">Choose State:</label>
+          <select id="stateSelect">
+            <option value="">Auto Detect (via IP)</option>
+            <option value="MD">Maryland</option>
+            <option value="NY">New York</option>
+            <option value="CA">California</option>
+            <!-- Add more states as needed -->
+          </select>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <div class="main-container">
+    <aside class="sidebar">
+      <form id="searchForm">
+        <img src="/static/img/mynameisjeff.png" alt="Site Logo" class="site-logo"/>
+        <strong>Search:</strong>
+        <select id="type" name="type">
+          <option value="Flower" disabled selected>Type</option>
+          <option value="All">All</option>
+          <option value="Flower">Flower</option>
+          <option value="Concentrate">Concentrate</option>
+          <option value="Edible">Edible</option>
+          <option value="Pre-Rolls">Pre-Rolls</option>
+          <option value="Vaporizers">Vaporizers</option>
+        </select>
+
+        <select id="maxPrice" name="maxPrice">
+          <option value="500" disabled selected>Max Price</option>
+          <option value="20">$20</option>
+          <option value="40">$40</option>
+          <option value="60">$60</option>
+          <option value="80">$80</option>
+          <option value="100">$100</option>
+          <option value="500">$500</option>
+        </select>
+
+        <select id="max_distance_km" name="max_distance_km">
+          <option value="25" disabled selected>Max Distance</option>
+          <option value="5">5 km</option>
+          <option value="10">10 km</option>
+          <option value="25">25 km</option>
+          <option value="50">50 km</option>
+          <option value="100">100 km</option>
+          <option value="150">150 km</option>
+        </select>
+
+        <select id="thc" name="thc">
+          <option value="10" disabled selected>Min THC</option>
+          <option value="10">10%</option>
+          <option value="20">20%</option>
+          <option value="30">30%</option>
+          <option value="40">40%</option>
+          <option value="70">70%</option>
+          <option value="80">80%</option>
+          <option value="90">90%</option>
+        </select>
+
+        <select id="store" name="store">
+          <option value="All" selected>Any Store</option>
+        </select>
+
+        <select id="brand" name="brand">
+          <option value="All" selected>Any Brand</option>
+        </select>
+
+        <button type="submit">Search</button>
+      </form>
+    </aside>
+
+    <main class="results-container">
+      <div class="results" id="results"></div>
+      <div class="pagination">
+        <button id="prevPage" disabled>Previous</button>
+        <span id="pageInfo">Page 1</span>
+        <button id="nextPage" disabled>Next</button>
+      </div>
+    </main>
+  </div>
+
+  <script src="{{ url_for('static', filename='js/app.js') }}"></script>
+</body>
+</html>
