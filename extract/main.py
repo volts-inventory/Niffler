@@ -44,4 +44,5 @@ if __name__ == "main":
         if start <= now_utc <= end:
             print(f"Firing main extract....{timestamp}")
             main()
+        print(f"Waiting to fire.....45 min wait...{timestamp}")
         time.sleep(45 * 60)
