@@ -31,18 +31,18 @@ def main():
             [mongod.push_store_data_to_db(dispo_info) for dispo_info in total_dispos]
             print("dispos loaded")
 
-if __name__ == "main":
-    print(f"Firing starting extract....")
-    main()
-    mongod.setup_indexes()
-    while True:
-        timestamp = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
-        now_utc = datetime.now(timezone.utc) 
-        today = now_utc.date()
-        start = datetime(today.year, today.month, today.day, 4, 15, tzinfo=timezone.utc)
-        end = datetime(today.year, today.month, today.day, 5, 0, tzinfo=timezone.utc)
-        if start <= now_utc <= end:
-            print(f"Firing main extract....{timestamp}")
-            main()
-        print(f"Waiting to fire.....45 min wait...{timestamp}")
-        time.sleep(45 * 60)
+
+print(f"Firing starting extract....")
+main()
+mongod.setup_indexes()
+while True:
+    timestamp = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+    now_utc = datetime.now(timezone.utc) 
+    today = now_utc.date()
+    start = datetime(today.year, today.month, today.day, 4, 15, tzinfo=timezone.utc)
+    end = datetime(today.year, today.month, today.day, 5, 0, tzinfo=timezone.utc)
+    if start <= now_utc <= end:
+        print(f"Firing main extract....{timestamp}")
+        main()
+    print(f"Waiting to fire.....45 min wait...{timestamp}")
+    time.sleep(45 * 60)
