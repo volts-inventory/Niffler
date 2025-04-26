@@ -1,4 +1,4 @@
-from datetime import datetime
+from datetime import datetime, timezone
 from dispo_mappings.request_field_to_common_field_map import disp_field_map_dutch, disp_field_map_jane
 import handlers.dispo_handler as dispo_handler
 import handlers.mongod as mongod
@@ -30,11 +30,18 @@ def main():
                     print(f"Getting {len(store_products)} products for {name}.....")
             [mongod.push_store_data_to_db(dispo_info) for dispo_info in total_dispos]
             print("dispos loaded")
-        mongod.setup_indexes()
 
-
-while True:
-    timestamp = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
-    print(f"Firing main extract....{timestamp}")
+if __name__ == "main":
+    print(f"Firing starting extract....")
     main()
-    time.sleep(24 * 60 * 60)
+    mongod.setup_indexes()
+    while True:
+        timestamp = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+        now_utc = datetime.now(timezone.utc) 
+        today = now_utc.date()
+        start = datetime(today.year, today.month, today.day, 4, 15, tzinfo=timezone.utc)
+        end = datetime(today.year, today.month, today.day, 5, 0, tzinfo=timezone.utc)
+        if start <= now_utc <= end:
+            print(f"Firing main extract....{timestamp}")
+            main()
+        time.sleep(45 * 60)
