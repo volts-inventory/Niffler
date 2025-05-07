@@ -42,7 +42,7 @@ services:
     build: ./frontend
     container_name: frontend
     ports:
-      - "31415:80"
+      - "31419:80"
     depends_on:
       - api
     networks:

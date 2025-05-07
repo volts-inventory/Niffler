@@ -12,18 +12,72 @@ function Navbar() {
       display: "flex",
       justifyContent: "space-between",
       alignItems: "center",
-      padding: "1rem 2rem",
+      padding: "0.75rem 2rem",
       backgroundColor: "#896A58",
       color: "white",
       fontWeight: "bold",
-      marginBottom: "1rem",
-      border: '1px solid rgb(215, 204, 200)',
+      border: "1px solid #00301e",
       "border-radius": "12px"
     }}>
-      <div style={{ fontSize: "1.2rem",  color: "#f8f6e3"}}>🌿 Seeking Mary</div>
+      <div  style={{
+        display: "flex",
+        gap: "1rem", // space between the items
+        justifyContent: "center", // center items horizontally (optional)
+        alignItems: "center", // align items vertically (optional)
+        "background-color": "#d1d0be",
+        "border-radius": "5px",
+        "padding": "5px",
+        border: "1px solid #00301e"
+      }}>
+        <img
+          src="/mynameisjoe.png" 
+          alt="Logo"
+          style={{
+            height: "auto",
+            borderRadius: "20px",
+            maxHeight: "40px"
+          }}
+        />
+        <div style={{fontSize: "1.2rem",  color: "#00301e"}}>🌿 Seeking Mary</div>
+      </div>
+      
       <div style={{ display: "flex", gap: "1.5rem" }}>
-        <Link to="/" style={{ color: "#f8f6e3", textDecoration: "none" }}>Find Cheap Herb</Link>
-        <Link to="/about" style={{ color: "#f8f6e3", textDecoration: "none" }}>About</Link>
+      <Link to="/about"  style={{
+          color: "#00301e",
+          textDecoration: "none",
+          border: "1px solid #00301e", // Add this
+          padding: "0.5rem",                      // Optional: adds space inside the border
+          borderRadius: "4px",                     // Optional: rounds the corners
+          backgroundColor: "#d1d0be"
+        }}
+        >About</Link>
+        <Link to="/"  style={{
+            color: "#00301e",
+            textDecoration: "none",
+            border: "1px solid #00301e", // Add this
+            padding: "0.5rem",                      // Optional: adds space inside the border
+            borderRadius: "4px",                     // Optional: rounds the corners
+            backgroundColor: "#d1d0be"
+          }}
+        >Herb Search</Link>
+        <Link to="/dailydispo"  style={{
+            color: "#00301e",
+            textDecoration: "none",
+            border: "1px solid #00301e", // Add this
+            padding: "0.5rem",                      // Optional: adds space inside the border
+            borderRadius: "4px",                     // Optional: rounds the corners
+            backgroundColor: "#d1d0be"
+          }}
+        >Daily Dispo</Link>
+        <Link to="/dailyproduct"  style={{
+            color: "#00301e",
+            textDecoration: "none",
+            border: "1px solid #00301e", // Add this
+            padding: "0.5rem",                      // Optional: adds space inside the border
+            borderRadius: "4px",                     // Optional: rounds the corners
+            backgroundColor: "#d1d0be"
+          }}
+        >Daily Product</Link>
       </div>
     </div>
   );
@@ -33,7 +87,7 @@ function ProductPage() {
   const { pos, error } = useGeoPosition();
   const [products, setProducts] = useState(null);
   const [currentPage, setCurrentPage] = useState(1);
-  const itemsPerPage = 15;
+  const itemsPerPage = 10;
 
   const runSearch = (formValues) => {
     if (!pos) return;
@@ -42,20 +96,6 @@ function ProductPage() {
       setCurrentPage(1);
     });
   };
-
-  useEffect(() => {
-    if (pos && products === null) {
-      runSearch({
-        brand: "All",
-        type: "Flower",
-        store: "All",
-        date: new Date().toISOString().split("T")[0],
-        thc: 20,
-        max_price: 100,
-        max_distance_km: 50,
-      });
-    }
-  }, [pos]);
 
   if (error) return <p>Error: {error}</p>;
   if (!pos) return <Loader />;
@@ -77,9 +117,33 @@ function ProductPage() {
       <div style={{ flexShrink: 0, width: window.innerWidth < 768 ? "100%" : "280px" }}>
         <FilterPanel coords={pos} onSearch={runSearch} />
       </div>
-      <div style={{ flexGrow: 1 }}>
-        {products?.length === 0 ? (
-          <p>No results match those filters.</p>
+      <div style={{ flexGrow: 1, background: "#acab9e", "border-radius": "12px"}}>
+        {!products || products.length === 0 ? (
+          <div style={{ 
+            display: "flex", 
+            justifyContent: "center", 
+            "flex-direction": "column", 
+            "text-align": "center",
+            padding: "1px",
+            borderRadius: "4px",              
+            backgroundColor: "#d1d0be"
+            }}
+            >
+            <img
+              src="/mynameisjeff.png" 
+              alt="Logo"
+              style={{
+                height: "auto",
+                margin: "0 auto",
+                marginBottom: "1rem",
+                borderRadius: "50px",
+                maxHeight: "208px",
+                padding: "10px"
+              }}
+            />
+            <strong style={{margin: "0 auto", justifyContent: "center"}}>"Why would anyone do drugs when they can just mow a lawn?" - Hank Hill <br/><br/></strong>
+            <p style={{margin: "0 auto", justifyContent: "center"}}>This search engine leverages price per weight and other characteristics to find results</p>
+          </div>
         ) : (
           <>
             <div style={{
@@ -104,7 +168,15 @@ function ProductPage() {
 }
 
 function AboutPage() {
-  return <div style={{ textAlign: "center", padding: "2rem", color: "#5d4037" }}><h2>About This Project</h2><p>This page is under construction.</p></div>;
+  return <div style={{ textAlign: "center", padding: "2rem", color: "#5d4037" }}><h2>About This Project</h2><p>This website aims to aggregate all mary jane listings based on location. This site does not set any product only links to official dispencary listings.</p></div>;
+}
+
+function DailyDispoPage() {
+  return <div style={{ textAlign: "center", padding: "2rem", color: "#5d4037" }}><h2>Dispo of the day</h2><p>To be selected</p></div>;
+}
+
+function DailyProductPage() {
+  return <div style={{ textAlign: "center", padding: "2rem", color: "#5d4037" }}><h2>Product of the day</h2><p>To be selected</p></div>;
 }
 
 export default function App() {
@@ -137,6 +209,8 @@ export default function App() {
       <Routes>
         <Route path="/" element={<ProductPage />} />
         <Route path="/about" element={<AboutPage />} />
+        <Route path="/dailydispo" element={<DailyDispoPage />} />
+        <Route path="/dailyproduct" element={<DailyProductPage />} />
       </Routes>
     </div>
   );

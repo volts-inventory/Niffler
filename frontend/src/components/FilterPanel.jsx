@@ -37,8 +37,8 @@ export default function FilterPanel({ coords, onSearch }) {
   const selectStyle = {
     width: "100%",
     maxWidth: "220px",
-    backgroundColor: "#fff8f1",
-    borderColor: "#fff8f1",
+    backgroundColor: "#d1d0be",
+    borderColor: "#d1d0be",
     color: "#2A2420",
     padding: "6px 8px",
     borderRadius: 4,
@@ -47,11 +47,11 @@ export default function FilterPanel({ coords, onSearch }) {
   const sliderStyle = {
     width: "100%",
     maxWidth: "220px",
-    accentColor: "#567257",
+    accentColor: "#02a264",
   };
   const buttonStyle = {
     backgroundColor: "#896A58",
-    color: "#f8f6e3",
+    color: "#d1d0be",
     border: "none",
     padding: "8px 16px",
     borderRadius: 6,
@@ -64,28 +64,19 @@ export default function FilterPanel({ coords, onSearch }) {
     
     <div
       style={{
-        border: "1px solid #d7ccc8",
+        border: "1px solid #00301e",
         borderRadius: 12,
         maxWidth:"100%",
         padding: "1rem",
-        backgroundColor: "#fff8f1",
+        backgroundColor: "#d1d0be",
         boxShadow: "0 2px 4px rgba(0, 0, 0, 0.05)",
         marginBottom: "2rem",
         display: "flex",
-        flexDirection: "column"
+        flexDirection: "column",
+        "text-align": "center"
       }}
     >
-      <img
-        src="/mynameisjeff.png" 
-        alt="Logo"
-        style={{
-          height: "auto",
-          margin: "0 auto",
-          marginBottom: "1rem",
-          borderRadius: "50px",
-          maxHeight: "208px"
-        }}
-      />
+      <strong style={{margin: "0 auto", padding: "10px", justifyContent: "center"}}>I'll find the cheapest grass locally. I'll tell you HWAT.</strong>
       <div style={{ marginBottom: "0.5rem", display: "flex", justifyContent: "space-between", alignItems: "center", "padding-inline": "10px"}}>
         <label style={labelStyle}>Brand </label>
         <select name="brand" value={form.brand} onChange={update} style={selectStyle}>

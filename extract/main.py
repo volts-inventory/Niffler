@@ -8,8 +8,8 @@ import time
 RANGE = 5
 STATES = {
             "MD":(39.0458, -76.6413), 
-            "NY":(41.209994, -73.918199),
-            "CA":(34.05223, -118.2436)
+            #"NY":(41.209994, -73.918199),
+            #"CA":(34.05223, -118.2436)
         }
 
 STATE_CONVERSTION = {"Maryland": "MD", "New York": "NY", "California":"CA"}
