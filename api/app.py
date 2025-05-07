@@ -1,13 +1,11 @@
 from flask import Flask, jsonify, request, render_template
+from flask_cors import CORS
 from pymongo import MongoClient
 
 app = Flask(__name__)
+CORS(app)
 client = MongoClient("mongodb://mongo:27017")
 mydb = client["mary_jane"]
-
-@app.route('/')
-def index():
-    return render_template('index.html')
 
 @app.route('/stores')
 def get_stores():
@@ -42,7 +40,7 @@ def get_products():
         meep_filters = {
             "price": {"$lte": max_price},
             "thc_percent": {"$gt": thc},
-            "created": {"$regex": date}
+            "updated": {"$regex": date}
         }   
 
         if brand != "All":
@@ -71,10 +69,14 @@ def get_products():
             },
             { 
                 "$sort": { "stats.price_per_g": 1 } 
-            },{
+            },
+            {
                 "$project": {
                     "_id": 0
                 }
+            },
+            {
+                "$limit": 250
             }
         ]
         try:

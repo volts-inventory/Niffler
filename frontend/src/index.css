@@ -1,0 +1,10 @@
+body {
+  margin: 0;
+  padding: 1rem;
+  font-family: 'Inter', sans-serif;
+  background: #ACAB9E;
+  color: #2A2420;
+}
+input[type="range"] {
+  accent-color: #567257;
+}

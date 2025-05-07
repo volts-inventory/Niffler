@@ -126,33 +126,36 @@ def get_products(store, disp_field_map):
                 img_url = get_by_path(product, disp_field_map["product_info_map"]["Photo_alt"])
             if not img_url:
                 img_url= "https://directus-media.leafly.com/92c0791b-1605-42d5-a9b2-e484bba88da1.png?auto=compress%2Cformat&w=80&dpr=2"
-            
+            name = get_by_path(product, disp_field_map["product_info_map"]["Name"])
             if not weight:
                 weight = 1
             price = get_by_path(product, disp_field_map["product_info_map"]["Price"])
             if not price:
                 price = get_by_path(product, disp_field_map["product_info_map"]["Price_alt"])
-            if price > 1:
+            if price > 1 and "shake" not in name.lower():
                 thc_check = get_by_path(product, disp_field_map["product_info_map"]["THC"])
                 thc = thc_check if thc_check else 1
+                dt =datetime.now(timezone.utc).strftime("%Y-%m-%d %H:%M:%S")
 
                 record = {
-                        "name":get_by_path(product, disp_field_map["product_info_map"]["Name"]),
+                        "uid": str(store["id"]) +"_"+ str(get_by_path(product, disp_field_map["product_info_map"]["ID"])),
+                        "id": get_by_path(product, disp_field_map["product_info_map"]["ID"]),
+                        "name":name,
                         "brand": get_by_path(product, disp_field_map["product_info_map"]["Brand"]),
                         "type":_type,
                         "amount_g":weight,
                         "price": price,
                         "thc_percent":thc,
-                        "created": datetime.now(timezone.utc).strftime("%Y-%m-%d %H:%M:%S"),
+                        "updated": dt,
                         "image_url": img_url,
+                        "past_prices": [(dt, price)],
                         "stats":{
                             "price_per_g": round(float(price/weight), 2),
                             "url": url,
                             "store_name":store["store_name"], 
                             "store_id":store["id"],
                             "state": store["location"]["state"],
-                            "store_loc":store["location"]["coordinates"], 
-                            "id": get_by_path(product, disp_field_map["product_info_map"]["ID"])
+                            "store_loc":store["location"]["coordinates"]
                         }
                     }
                 store_products.append(record)

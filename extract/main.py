@@ -5,7 +5,7 @@ import handlers.mongod as mongod
 import time
 
 
-RANGE = 150
+RANGE = 5
 STATES = {
             "MD":(39.0458, -76.6413), 
             "NY":(41.209994, -73.918199),

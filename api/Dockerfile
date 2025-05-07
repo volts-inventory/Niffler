@@ -13,5 +13,4 @@ RUN pip install --no-cache-dir -r requirements.txt
 COPY . .
 
 # Default command to run your script (adjust as needed)
-#CMD ["flask", "run", "--host=0.0.0.0"]
 CMD ["gunicorn", "--bind", "0.0.0.0:5000", "app:app"]

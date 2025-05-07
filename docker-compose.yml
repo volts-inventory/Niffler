@@ -12,16 +12,16 @@ services:
     volumes:
       - mongo_data:/data/db
 
-  web:
-    build: ./web
-    container_name: web-server
+  api:
+    build: ./api
+    container_name: api-server
     restart: always
     networks:
       - my-network
     ports:
-      - "31415:5000"
+      - "5000"
     depends_on:
-      - mongo
+      - extract
     environment:
       - PYTHONUNBUFFERED=1
 
@@ -37,6 +37,16 @@ services:
       - mongo_data:/data/db
     environment:
       - PYTHONUNBUFFERED=1
+  
+  frontend:
+    build: ./frontend
+    container_name: frontend
+    ports:
+      - "31417:80"
+    depends_on:
+      - api
+    networks:
+      - my-network
 
 volumes:
   mongo_data:

@@ -3,3 +3,4 @@ folium
 Flask
 geopy
 gunicorn
+flask-cors
