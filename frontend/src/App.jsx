@@ -17,7 +17,8 @@ function Navbar() {
       color: "white",
       fontWeight: "bold",
       border: "1px solid #00301e",
-      "border-radius": "12px"
+      "border-radius": "12px",
+      "overflow": "hidden"
     }}>
       <div  style={{
         display: "flex",
@@ -138,7 +139,8 @@ function ProductPage() {
                 marginBottom: "1rem",
                 borderRadius: "50px",
                 maxHeight: "208px",
-                padding: "10px"
+                height: "100%",
+                objectFit: "cover",
               }}
             />
             <strong style={{margin: "0 auto", justifyContent: "center"}}>"Why would anyone do drugs when they can just mow a lawn?" - Hank Hill <br/><br/></strong>
