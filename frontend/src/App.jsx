@@ -9,76 +9,67 @@ import { useState, useEffect, useRef } from "react";
 function Navbar() {
   return (
     <div style={{
-      display: "flex",
-      justifyContent: "space-between",
+      display: "inline-flex",
       alignItems: "center",
-      padding: "0.75rem 2rem",
       backgroundColor: "#896A58",
       color: "white",
       fontWeight: "bold",
       border: "1px solid #00301e",
       "border-radius": "12px",
-      "overflow": "hidden"
+      "overflow": "hidden",
+      "gap": "1rem",
+      "width": "100%",
+      "justify-content": "center"
     }}>
-      <div  style={{
-        display: "flex",
-        gap: "1rem", // space between the items
-        justifyContent: "center", // center items horizontally (optional)
-        alignItems: "center", // align items vertically (optional)
-        "background-color": "#d1d0be",
-        "border-radius": "5px",
-        "padding": "5px",
-        border: "1px solid #00301e"
-      }}>
-        <img
+      <img
           src="/mynameisjoe.png" 
           alt="Logo"
           style={{
             height: "auto",
             borderRadius: "20px",
-            maxHeight: "40px"
+            maxHeight: "90px"
           }}
         />
-        <div style={{fontSize: "1.2rem",  color: "#00301e"}}>🌿 Seeking Mary</div>
-      </div>
-      
-      <div style={{ display: "flex", gap: "1.5rem" }}>
-      <Link to="/about"  style={{
-          color: "#00301e",
-          textDecoration: "none",
-          border: "1px solid #00301e", // Add this
-          padding: "0.5rem",                      // Optional: adds space inside the border
-          borderRadius: "4px",                     // Optional: rounds the corners
-          backgroundColor: "#d1d0be"
-        }}
-        >About</Link>
-        <Link to="/"  style={{
-            color: "#00301e",
-            textDecoration: "none",
-            border: "1px solid #00301e", // Add this
-            padding: "0.5rem",                      // Optional: adds space inside the border
-            borderRadius: "4px",                     // Optional: rounds the corners
-            backgroundColor: "#d1d0be"
-          }}
-        >Herb Search</Link>
-        <Link to="/dailydispo"  style={{
-            color: "#00301e",
-            textDecoration: "none",
-            border: "1px solid #00301e", // Add this
-            padding: "0.5rem",                      // Optional: adds space inside the border
-            borderRadius: "4px",                     // Optional: rounds the corners
-            backgroundColor: "#d1d0be"
-          }}
-        >Daily Dispo</Link>
-        <Link to="/dailyproduct"  style={{
-            color: "#00301e",
-            textDecoration: "none",
-            border: "1px solid #00301e", // Add this
-            padding: "0.5rem",                      // Optional: adds space inside the border
-            borderRadius: "4px",                     // Optional: rounds the corners
-            backgroundColor: "#d1d0be"
-          }}
-        >Daily Product</Link>
+      <div  style={{display: "inline", "text-align": "center"}}>
+        <div style={{fontSize: "2rem",  color: "#00301e"}}>🌿 Seeking Mary</div>
+        <div style={{ display: "flex", gap: "1rem", justifyContent: "center"}}>
+          <Link to="/about"  style={{
+              color: "#00301e",
+              textDecoration: "none",
+              border: "1px solid #00301e", // Add this
+              padding: "0.5rem",                      // Optional: adds space inside the border
+              borderRadius: "4px",                     // Optional: rounds the corners
+              backgroundColor: "#d1d0be"
+            }}
+            >About</Link>
+            <Link to="/"  style={{
+                color: "#00301e",
+                textDecoration: "none",
+                border: "1px solid #00301e", // Add this
+                padding: "0.5rem",                      // Optional: adds space inside the border
+                borderRadius: "4px",                     // Optional: rounds the corners
+                backgroundColor: "#d1d0be"
+              }}
+            >Herb Search</Link>
+            <Link to="/dailydispo"  style={{
+                color: "#00301e",
+                textDecoration: "none",
+                border: "1px solid #00301e", // Add this
+                padding: "0.5rem",                      // Optional: adds space inside the border
+                borderRadius: "4px",                     // Optional: rounds the corners
+                backgroundColor: "#d1d0be"
+              }}
+            >Daily Dispo</Link>
+            <Link to="/dailyproduct"  style={{
+                color: "#00301e",
+                textDecoration: "none",
+                border: "1px solid #00301e", // Add this
+                padding: "0.5rem",                      // Optional: adds space inside the border
+                borderRadius: "4px",                     // Optional: rounds the corners
+                backgroundColor: "#d1d0be"
+              }}
+            >Daily Product</Link>
+        </div>
       </div>
     </div>
   );
