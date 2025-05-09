@@ -135,7 +135,9 @@ function ProductPage() {
               }}
             />
             <strong style={{margin: "0 auto", justifyContent: "center"}}>"Why would anyone do drugs when they can just mow a lawn?" - Hank Hill <br/><br/></strong>
-            <p style={{margin: "0 auto", justifyContent: "center"}}>This search engine leverages price per weight and other characteristics to find results</p>
+            <p style={{margin: "0 auto", justifyContent: "center"}}>Search leverages price per weight and other characteristics to find results.</p>
+            <i style={{margin: "0 auto", justifyContent: "center"}}>This site aggregates and links to products from local shops. It does not sell products.</i>
+            <strong style={{margin: "0 auto", justifyContent: "center"}}>Only supports Maryland currently.</strong>
           </div>
         ) : (
           <>

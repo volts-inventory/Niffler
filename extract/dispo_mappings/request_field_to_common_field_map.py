@@ -21,7 +21,7 @@ disp_field_map_dutch = {
         'content-type': 'application/json'
     },
    "product_return_key": "data.filteredProducts.products",
-   "search_range": 20,
+   "search_range": 200,
    "product_info_map":{
        "ID": "id",
        "Name": "Name",
@@ -65,7 +65,7 @@ disp_field_map_jane = {
     }, 
     "product_filter_string": 'store_id = å AND (kind:\"∫\" OR root_types:\"∫\")',
     "product_return_key": "hits",
-    "search_range": 10,
+    "search_range": 100,
     "product_info_map":{
        "ID": "product_id",
        "Name": "name",
