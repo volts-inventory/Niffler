@@ -32,7 +32,7 @@ function Navbar() {
         />
       <div  style={{display: "inline", "text-align": "center"}}>
         <div style={{fontSize: "2rem",  color: "#00301e"}}>🌿 Seeking Mary</div>
-        <div style={{ display: "flex", gap: "1rem", justifyContent: "center"}}>
+        <div style={{ display: "flex", gap: "0.5rem", justifyContent: "center"}}>
           <Link to="/about"  style={{
               color: "#00301e",
               textDecoration: "none",
