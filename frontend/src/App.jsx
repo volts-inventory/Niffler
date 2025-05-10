@@ -19,21 +19,21 @@ function Navbar() {
       "overflow": "hidden",
       "gap": "1rem",
       "width": "100%",
-      "justify-content": "center"
+      "justify-content": "space-between",
+      "padding": "5px"
     }}>
-      <img
+        <img
           src="/mynameisjoe.png" 
           alt="Logo"
           style={{
             height: "auto",
             borderRadius: "20px",
-            maxHeight: "90px"
+            maxHeight: "50px"
           }}
         />
-      <div  style={{display: "inline", "text-align": "center"}}>
-        <div style={{fontSize: "2rem",  color: "#00301e"}}>🌿 Seeking Mary</div>
-        <div style={{ display: "flex", gap: "0.5rem", justifyContent: "center"}}>
-          <Link to="/about"  style={{
+      <div style={{fontSize: "1.5rem",  color: "#00301e"}}>🌿 Seeking Mary</div>
+      <div style={{ display: "flex", gap: "0.5rem", justifyContent: "center"}}>
+          <Link to="/dailydispo"  style={{
               color: "#00301e",
               textDecoration: "none",
               border: "1px solid #00301e", // Add this
@@ -41,38 +41,19 @@ function Navbar() {
               borderRadius: "4px",                     // Optional: rounds the corners
               backgroundColor: "#d1d0be"
             }}
-            >About</Link>
-            <Link to="/"  style={{
-                color: "#00301e",
-                textDecoration: "none",
-                border: "1px solid #00301e", // Add this
-                padding: "0.5rem",                      // Optional: adds space inside the border
-                borderRadius: "4px",                     // Optional: rounds the corners
-                backgroundColor: "#d1d0be"
-              }}
-            >Herb Search</Link>
-            <Link to="/dailydispo"  style={{
-                color: "#00301e",
-                textDecoration: "none",
-                border: "1px solid #00301e", // Add this
-                padding: "0.5rem",                      // Optional: adds space inside the border
-                borderRadius: "4px",                     // Optional: rounds the corners
-                backgroundColor: "#d1d0be"
-              }}
-            >Daily Dispo</Link>
-            <Link to="/dailyproduct"  style={{
-                color: "#00301e",
-                textDecoration: "none",
-                border: "1px solid #00301e", // Add this
-                padding: "0.5rem",                      // Optional: adds space inside the border
-                borderRadius: "4px",                     // Optional: rounds the corners
-                backgroundColor: "#d1d0be"
-              }}
-            >Daily Product</Link>
-        </div>
+          >Daily Dispo</Link>
+          <Link to="/dailyproduct"  style={{
+              color: "#00301e",
+              textDecoration: "none",
+              border: "1px solid #00301e", // Add this
+              padding: "0.5rem",                      // Optional: adds space inside the border
+              borderRadius: "4px",                     // Optional: rounds the corners
+              backgroundColor: "#d1d0be"
+            }}
+          >Daily Product</Link>
       </div>
     </div>
-  );
+);
 }
 
 function ProductPage() {
@@ -100,7 +81,7 @@ function ProductPage() {
       style={{
         display: "flex",
         flexDirection: window.innerWidth < 768 ? "column" : "row",
-        padding: "1rem",
+        padding: "10px",
         maxWidth: 1200,
         margin: "0 auto",
         gap: "1rem"
@@ -136,8 +117,8 @@ function ProductPage() {
             />
             <strong style={{margin: "0 auto", justifyContent: "center"}}>"Why would anyone do drugs when they can just mow a lawn?" - Hank Hill <br/><br/></strong>
             <p style={{margin: "0 auto", justifyContent: "center"}}>Search leverages price per weight and other characteristics to find results.</p>
-            <i style={{margin: "0 auto", justifyContent: "center"}}>This site aggregates and links to products from local shops. It does not sell products.</i>
-            <strong style={{margin: "0 auto", justifyContent: "center"}}>Only supports Maryland currently.</strong>
+            <strong style={{margin: "0 auto", justifyContent: "center"}}>This site aggregates and links to products from local shops. It does not sell products.</strong>
+            <strong style={{margin: "0 auto", justifyContent: "center"}}>Currently only the state of MD is supported.</strong>
           </div>
         ) : (
           <>
@@ -160,10 +141,6 @@ function ProductPage() {
       </div>
     </div>
   );
-}
-
-function AboutPage() {
-  return <div style={{ textAlign: "center", padding: "2rem", color: "#5d4037" }}><h2>About This Project</h2><p>This website aims to aggregate all mary jane listings based on location. This site does not set any product only links to official dispencary listings.</p></div>;
 }
 
 function DailyDispoPage() {
@@ -203,7 +180,6 @@ export default function App() {
       <Navbar />
       <Routes>
         <Route path="/" element={<ProductPage />} />
-        <Route path="/about" element={<AboutPage />} />
         <Route path="/dailydispo" element={<DailyDispoPage />} />
         <Route path="/dailyproduct" element={<DailyProductPage />} />
       </Routes>

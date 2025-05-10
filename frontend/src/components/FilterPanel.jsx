@@ -1,6 +1,5 @@
 import { useState, useEffect } from "react";
 import { getBrands, getStores } from "../api";
-import Loader from "./Loader";
 
 export default function FilterPanel({ coords, onSearch }) {
   const [brands, setBrands] = useState([]);
@@ -9,10 +8,10 @@ export default function FilterPanel({ coords, onSearch }) {
     brand: "All",
     type: "Flower",
     store: "All",
-    date: new Date().toISOString().split("T")[0],
+    date: new Date().toLocaleDateString('en-CA'),
     thc: 20,
     max_price: 100,
-    max_distance_km: 50,
+    max_distance_km: 10,
   });
 
   const [isFirstSearchDone, setIsFirstSearchDone] = useState(false);
@@ -114,7 +113,7 @@ export default function FilterPanel({ coords, onSearch }) {
       </div>
       
       <div style={{ marginBottom: "0.5rem", display: "flex", flexDirection: "column", justifyContent: "space-between", alignItems: "center"}}>
-        <label style={labelStyle}>THC - {form.thc}%</label>
+        <label style={labelStyle}>THC - &lt; {form.thc}%</label>
         <input
           type="range"
           name="thc"

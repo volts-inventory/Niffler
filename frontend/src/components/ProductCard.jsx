@@ -42,7 +42,7 @@ export default function ProductCard({ p }) {
         {p.thc_percent}% THC • {p.type}
       </p>
       <p style={{ margin: "4px 0", fontWeight: "bold", color: "#4e342e" }}>
-        ${p.price?.toFixed(2)} <span style={{ color: "#757575" }}>({p.stats?.price_per_g?.toFixed(2) ?? "n/a"} $/g)</span>
+        ${p.price?.toFixed(2)} •  <span style={{fontWeight: "normal"}}>{p.amount_g} G</span> • <span style={{ color: "#757575" }}>({p.stats?.price_per_g?.toFixed(2) ?? "n/a"} $/g)</span>
       </p>
       <small style={{ color: "#8d6e63" }}>
         {p.stats?.store_name} – {Math.round(p.stats?.distance / 1000)} km away
