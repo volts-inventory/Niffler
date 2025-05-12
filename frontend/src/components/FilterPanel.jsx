@@ -19,11 +19,11 @@ export default function FilterPanel({ coords, onSearch }) {
   const handleSearch = async () => {
     if (!coords) return;
 
-    const distance = form.max_distance_km;
+    const distanceKm = Number(form.max_distance_km) * 1.60934;
 
     const [brandList, storeList] = await Promise.all([
-      getBrands(coords.lat, coords.lng, distance),
-      getStores(coords.lat, coords.lng, distance),
+      getBrands(coords.lat, coords.lng, distanceKm),
+      getStores(coords.lat, coords.lng, distanceKm),
     ]);
 
     setBrands(brandList);
@@ -84,15 +84,15 @@ export default function FilterPanel({ coords, onSearch }) {
         "text-align": "center"
       }}
     >
-      <strong style={{margin: "0 auto", padding: "10px", justifyContent: "center"}}>I'll find the cheapest grass locally. I'll tell you HWAT.</strong>
+      <p style={{margin: "0 auto", padding: "10px", justifyContent: "center"}}>"I'll find the cheapest grass locally. I'll tell you HWAT."<br/></p>
       
       <div style={{ marginBottom: "0.5rem", display: "flex", flexDirection: "column", justifyContent: "space-between", alignItems: "center"}}>
-        <label style={labelStyle}>Distance - {form.max_distance_km} km</label>
+        <label style={labelStyle}>{coords.city} &lt; {form.max_distance_km} miles</label>
         <input
           type="range"
           name="max_distance_km"
           min="1"
-          max="150"
+          max="75"
           value={form.max_distance_km}
           onChange={update}
           style={sliderStyle}

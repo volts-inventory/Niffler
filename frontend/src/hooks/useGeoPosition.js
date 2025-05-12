@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState, useEffect } from "react";
 
 export function useGeoPosition() {
   const [pos, setPos] = useState(null);
@@ -10,7 +10,13 @@ export function useGeoPosition() {
       .then((data) => {
         if (data.loc) {
           const [lat, lng] = data.loc.split(",").map(Number);
-          setPos({ lat, lng });
+          setPos({
+            lat,
+            lng,
+            state: data.region,
+            country: data.country,
+            city: data.city
+          });
         } else {
           setError("Location data not available");
         }

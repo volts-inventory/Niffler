@@ -31,7 +31,9 @@ function Navbar() {
             maxHeight: "50px"
           }}
         />
-      <div style={{fontSize: "1.5rem",  color: "#00301e"}}>🌿 Seeking Mary</div>
+      <Link to="/" style={{ fontSize: "1.5rem", color: "#00301e", textDecoration: "none" }}>
+        🌿 Seeking Mary
+      </Link>
       <div style={{ display: "flex", gap: "0.5rem", justifyContent: "center"}}>
           <Link to="/dailydispo"  style={{
               color: "#00301e",
@@ -60,11 +62,13 @@ function ProductPage() {
   const { pos, error } = useGeoPosition();
   const [products, setProducts] = useState(null);
   const [currentPage, setCurrentPage] = useState(1);
-  const itemsPerPage = 10;
+  const itemsPerPage = 25;
 
   const runSearch = (formValues) => {
-    if (!pos) return;
-    getProducts({ ...formValues, ...pos }).then((data) => {
+    if (!pos || pos.state !== "Maryland" || pos.country !== "US") return;
+      const distanceKm = Number(formValues.max_distance_km) * 1.60934;
+      const updatedFormValues = { ...formValues, max_distance_km: distanceKm, ...pos };
+      getProducts(updatedFormValues).then((data) => {
       setProducts(data);
       setCurrentPage(1);
     });
@@ -131,9 +135,25 @@ function ProductPage() {
             </div>
             {totalPages > 1 && (
               <div style={{ textAlign: "center", marginTop: "1.5rem" }}>
-                <button onClick={() => setCurrentPage(p => Math.max(p - 1, 1))} disabled={currentPage === 1}>← Prev</button>
+                <button
+                  onClick={() => {
+                    setCurrentPage((p) => Math.max(p - 1, 1));
+                    window.scrollTo({ top: 0, behavior: "smooth" });
+                  }}
+                  disabled={currentPage === 1}
+                >
+                  ← Prev
+                </button>
                 <span style={{ margin: "0 1rem" }}>Page {currentPage} of {totalPages}</span>
-                <button onClick={() => setCurrentPage(p => Math.min(p + 1, totalPages))} disabled={currentPage === totalPages}>Next →</button>
+                <button
+                  onClick={() => {
+                    setCurrentPage((p) => Math.min(p + 1, totalPages));
+                    window.scrollTo({ top: 0, behavior: "smooth" });
+                  }}
+                  disabled={currentPage === totalPages}
+                >
+                  Next →
+                </button>
               </div>
             )}
           </>
@@ -148,7 +168,55 @@ function DailyDispoPage() {
 }
 
 function DailyProductPage() {
-  return <div style={{ textAlign: "center", padding: "2rem", color: "#5d4037" }}><h2>Product of the day</h2><p>To be selected</p></div>;
+  const { pos, error } = useGeoPosition();
+  const [products, setProducts] = useState(null);
+  const [currentPage, setCurrentPage] = useState(1);
+  const itemsPerPage = 25;
+
+  useEffect(() => {
+    if (!pos || pos.state !== "Maryland" || pos.country !== "US") return;
+
+    const formValues = {
+      brand: "All",
+      type: "Flower",
+      store: "All",
+      date: new Date().toLocaleDateString("en-CA"),
+      thc: 30,
+      max_price: 75,
+      max_distance_km: 10,
+      limit: 1,
+    };
+
+    const updatedFormValues = { ...formValues, ...pos };
+
+    getProducts(updatedFormValues).then((data) => {
+      setProducts(data);
+    });
+
+  }, [pos]); // Dependency array: run effect only when pos changes
+
+  // Handle loading, error, or empty state
+  if (error) return <p>Error: {error}</p>;
+  if (!pos || !products) return <Loader />;
+
+  const currentProducts = products.slice((currentPage - 1) * itemsPerPage, currentPage * itemsPerPage);
+
+  return (
+    <div style={{ textAlign: "center", padding: "2rem", color: "#5d4037" }}>
+      <h2>Product of the day</h2>
+      <div
+        style={{
+          display: "grid",
+          gridTemplateColumns: "repeat(auto-fit, minmax(240px, 2fr))",
+          gap: "1rem",
+        }}
+      >
+        {currentProducts.map((p) => (
+          <ProductCard key={p.id} p={p} />
+        ))}
+      </div>
+    </div>
+  );
 }
 
 export default function App() {

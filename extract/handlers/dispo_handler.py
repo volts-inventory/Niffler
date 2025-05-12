@@ -100,14 +100,21 @@ def get_products(store, disp_field_map):
         try:
             a = {"gram": 1, "eighth ounce": 3.5, "quarter ounce": 7, "half ounce": 14, "two gram": 2, "ounce": 28, "price each": 1, "half gram":0.5}
             convert = {"flower": "Flower","extract": "Concentrate","edible": "Edible","pre-roll": "Pre-Rolls","vape": "Vaporizers"}
+            
+            blocklisted_sub_types = ["shake"]
+            blocklisted_names = ["ready to roll", "untrim", "pre-ground", "preground"]
+            name = get_by_path(product, disp_field_map["product_info_map"]["Name"])
+            subtype = get_by_path(product, disp_field_map["product_info_map"]["SubType"])
+            
+            if any(bad_name.lower() in name.lower() for bad_name in blocklisted_names if not name):
+                continue
+            if any(bad_sub.lower() in subtype.lower() for bad_sub in blocklisted_sub_types if subtype):
+                continue
 
             _type = get_by_path(product, disp_field_map["product_info_map"]["Type"])
             if _type in convert.keys():
                 _type = convert[_type]
 
-            # https://www.iheartjane.com/stores/4439
-            # https://www.iheartjane.com/stores/4439/products/the-essence-ice-cream-cake-1g
-            # https://dutchie.com/dispensary/harvest-of-rockville/product/0-75g-afternoon-delight-4-big-dog-pre-roll
             if "ç" in disp_field_map["product_info_map"]["URL_for"]:
                 url = disp_field_map["url_base"] + disp_field_map["product_info_map"]["URL_for"].replace("å", str(get_by_path(store, disp_field_map["product_info_map"]["Store_url"]))).replace("∫", str(get_by_path(product, disp_field_map["product_info_map"]["ID"]))).replace("ç", str(get_by_path(product, disp_field_map["product_info_map"]["Url_slug"])))
             else:
@@ -126,13 +133,13 @@ def get_products(store, disp_field_map):
                 img_url = get_by_path(product, disp_field_map["product_info_map"]["Photo_alt"])
             if not img_url:
                 img_url= "https://directus-media.leafly.com/92c0791b-1605-42d5-a9b2-e484bba88da1.png?auto=compress%2Cformat&w=80&dpr=2"
-            name = get_by_path(product, disp_field_map["product_info_map"]["Name"])
+            
             if not weight:
                 weight = 1
             price = get_by_path(product, disp_field_map["product_info_map"]["Price"])
             if not price:
                 price = get_by_path(product, disp_field_map["product_info_map"]["Price_alt"])
-            if price > 1 and "shake" not in name.lower():
+            if price > 1:
                 thc_check = get_by_path(product, disp_field_map["product_info_map"]["THC"])
                 thc = thc_check if thc_check else 1
                 dt =datetime.now(timezone.utc).strftime("%Y-%m-%d %H:%M:%S")

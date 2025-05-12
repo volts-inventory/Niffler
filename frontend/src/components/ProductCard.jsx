@@ -28,7 +28,7 @@ export default function ProductCard({ p }) {
           }}
         />
       )}
-      <h3 style={{ marginBottom: 4, fontSize: 18 }}>
+      <h3 style={{ marginBottom: 4, fontSize: 16 }}>
         <a
           href={p.stats?.url}
           target="_blank"
@@ -45,7 +45,7 @@ export default function ProductCard({ p }) {
         ${p.price?.toFixed(2)} •  <span style={{fontWeight: "normal"}}>{p.amount_g} G</span> • <span style={{ color: "#757575" }}>({p.stats?.price_per_g?.toFixed(2) ?? "n/a"} $/g)</span>
       </p>
       <small style={{ color: "#8d6e63" }}>
-        {p.stats?.store_name} – {Math.round(p.stats?.distance / 1000)} km away
+        {p.stats?.store_name} – {Math.round((p.stats?.distance / 1000) / 1.60934)} miles away
       </small>
     </div>
   );

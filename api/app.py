@@ -34,7 +34,8 @@ def get_products():
     max_price = float(request.args.get("max_price"))
     lat = float(request.args.get("lat"))
     lng = float(request.args.get("lng"))
-    max_distance_km = int(request.args.get("max_distance_km", 80)) * 1000
+    max_distance_km = int(float(request.args.get("max_distance_km")) * 1000)
+    limit = int(request.args.get("limit", 250))
     
     if brand and type and date:
         meep_filters = {
@@ -76,7 +77,7 @@ def get_products():
                 }
             },
             {
-                "$limit": 250
+                "$limit": limit
             }
         ]
         try:

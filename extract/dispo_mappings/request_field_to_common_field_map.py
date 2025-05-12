@@ -21,7 +21,7 @@ disp_field_map_dutch = {
         'content-type': 'application/json'
     },
    "product_return_key": "data.filteredProducts.products",
-   "search_range": 20,
+   "search_range": 200,
    "product_info_map":{
        "ID": "id",
        "Name": "Name",
@@ -34,7 +34,8 @@ disp_field_map_dutch = {
        "URL_for": "å/product/∫",
        "Photo": "Image",
        "Url_slug": "cName",
-       "Store_url": "cName"
+       "Store_url": "cName",
+       "SubType": "subcategory"
    }
 }
 
@@ -65,7 +66,7 @@ disp_field_map_jane = {
     }, 
     "product_filter_string": 'store_id = å AND (kind:\"∫\" OR root_types:\"∫\")',
     "product_return_key": "hits",
-    "search_range": 10,
+    "search_range": 100,
     "product_info_map":{
        "ID": "product_id",
        "Name": "name",
@@ -79,6 +80,7 @@ disp_field_map_jane = {
        "Photo": "product_photos.1.urls.medium",
        "Photo_alt": "product_photos.0.urls.medium",
        "Url_slug": "url_slug",
-       "Store_url": "id"
+       "Store_url": "id",
+       "SubType": "brand_subtype"
    }
 }

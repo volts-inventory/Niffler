@@ -5,10 +5,10 @@ const api = axios.create({
   baseURL: "/api",
 });
 
-export const getStores = (lat, lng, max_distance_km = 80) =>
+export const getStores = (lat, lng, max_distance_km) =>
   api.get("/stores", { params: { lat, lng, max_distance_km } }).then((r) => r.data);
 
-export const getBrands = (lat, lng, max_distance_km = 80) =>
+export const getBrands = (lat, lng, max_distance_km) =>
   api.get("/brands", { params: { lat, lng, max_distance_km } }).then((r) => r.data);
 
 export const getProducts = (params) =>
