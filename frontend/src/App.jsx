@@ -21,7 +21,7 @@ function Navbar() {
       "justify-content": "space-between",
       "padding": "5px",
     }}>
-        <div style={{ display: "flex", gap: "0.5rem", justifyContent: "center"}}>
+        <div style={{ display: "flex", gap: "0.5rem", justifyContent: "center", alignItems: "center"}}>
           <img
             src="/mynameisjoe.png" 
             alt="Logo"
@@ -31,7 +31,7 @@ function Navbar() {
               maxHeight: "70px"
             }}
           />
-        <Link to="/" style={{ fontSize: "1.5rem", color: "#02a264", textDecoration: "none" }}>
+        <Link to="/" style={{ fontSize: "2rem", fontWeight: "800", color: "#02a264", textDecoration: "none" }}>
           🌿 Seeking Mary
         </Link>
       </div>
