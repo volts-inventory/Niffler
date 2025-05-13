@@ -19,64 +19,61 @@ function Navbar() {
       "overflow": "hidden",
       "width": "100%",
       "justify-content": "space-between",
-      "padding": "5px",
+      "padding": "7px"
     }}>
-        <div style={{ display: "flex", gap: "0.5rem", justifyContent: "center", alignItems: "center"}}>
-          <img
-            src="/mynameisjoe.png" 
-            alt="Logo"
-            style={{
-              height: "auto",
-              borderRadius: "20px",
-              maxHeight: "70px"
-            }}
-          />
-          <Link
-            to="/"
-            style={{
-              fontSize: "2rem",
-              color: "#053f28",
-              textDecoration: "underline",
-              textDecorationColor: "#053f28",         // soft green underline
-              textUnderlineOffset: "4px",
-              fontStyle: "italic",
-              fontWeight: "800",
-              textShadow: "1px 1pxrgb(5, 5, 0)",          // subtle shadow
-              letterSpacing: "1px",
-              transition: "color 0.3s ease, transform 0.2s ease",
-            }}
-            onMouseEnter={(e) => {
-              e.target.style.color = "#0c6b4b";
-              e.target.style.transform = "scale(1.03)";
-            }}
-            onMouseLeave={(e) => {
-              e.target.style.color = "#053f28";
-              e.target.style.transform = "scale(1)";
-            }}
-          >
-            🌿 Seeking Mary
-          </Link>
+      <img
+        src="/mynameisjoe.png" 
+        alt="Logo"
+        style={{
+          height: "auto",
+          borderRadius: "20px",
+          maxHeight: "70px"
+        }}
+      />
+      <div style={{ 
+        display: "block", 
+        alignItems: "center", 
+        textAlign: "center", 
+        position: "absolute", 
+        left: "50%", 
+        transform: "translateX(-50%)" // transform must be a string!
+      }}>
+        <Link
+          to="/"
+          style={{
+            fontSize: "2rem",
+            color: "#053f28",
+            textDecoration: "underline",
+            textDecorationColor: "#053f28",         // soft green underline
+            textUnderlineOffset: "4px",
+            fontStyle: "italic",
+            fontWeight: "800",
+            textShadow: "1px 1pxrgb(5, 5, 0)",          // subtle shadow
+            letterSpacing: "1px",
+            transition: "color 0.3s ease, transform 0.2s ease",
+          }}
+          onMouseEnter={(e) => {
+            e.target.style.color = "#0c6b4b";
+            e.target.style.transform = "scale(1.03)";
+          }}
+          onMouseLeave={(e) => {
+            e.target.style.color = "#053f28";
+            e.target.style.transform = "scale(1)";
+          }}
+        >
+          Seeking Mary
+        </Link>
+        <p style={{margin: "0 auto", color: "#00301e", justifyContent: "center"}}>"I'll find the cheapest grass locally. I'll tell you HWAT."</p>
       </div>
-      <div style={{ display: "flex", gap: "0.5rem", justifyContent: "center"}}>
-          <Link to="/dailydispo"  style={{
-              color: "#00301e",
-              textDecoration: "none",
-              border: "1px solid #00301e", // Add this
-              padding: "0.5rem",                      // Optional: adds space inside the border
-              borderRadius: "4px",                     // Optional: rounds the corners
-              backgroundColor: "#d1d0be"
-            }}
-          >Daily Dispo</Link>
-          <Link to="/dailyproduct"  style={{
-              color: "#00301e",
-              textDecoration: "none",
-              border: "1px solid #00301e", // Add this
-              padding: "0.5rem",                      // Optional: adds space inside the border
-              borderRadius: "4px",                     // Optional: rounds the corners
-              backgroundColor: "#d1d0be"
-            }}
-          >Daily Product</Link>
-      </div>
+      <Link to="/dailyproduct"  style={{
+          color: "#00301e",
+          textDecoration: "none",
+          border: "1px solid #00301e", // Add this
+          padding: "0.5rem",                      // Optional: adds space inside the border
+          borderRadius: "4px",                     // Optional: rounds the corners
+          backgroundColor: "#d1d0be"
+        }}
+      >Daily<br/>Product</Link>
     </div>
 );
 }
@@ -186,10 +183,6 @@ function ProductPage() {
   );
 }
 
-function DailyDispoPage() {
-  return <div style={{ textAlign: "center", padding: "2rem", color: "#5d4037" }}><h2>Dispo of the day</h2><p>To be selected</p></div>;
-}
-
 function DailyProductPage() {
   const { pos, error } = useGeoPosition();
   const [products, setProducts] = useState(null);
@@ -271,7 +264,6 @@ export default function App() {
       <Navbar />
       <Routes>
         <Route path="/" element={<ProductPage />} />
-        <Route path="/dailydispo" element={<DailyDispoPage />} />
         <Route path="/dailyproduct" element={<DailyProductPage />} />
       </Routes>
     </div>
