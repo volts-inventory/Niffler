@@ -37,11 +37,11 @@ function Navbar() {
               fontSize: "2rem",
               color: "#053f28",
               textDecoration: "underline",
-              textDecorationColor: "#84bfa0",         // soft green underline
+              textDecorationColor: "#053f28",         // soft green underline
               textUnderlineOffset: "4px",
               fontStyle: "italic",
               fontWeight: "800",
-              textShadow: "1px 1px #d1d0be",          // subtle shadow
+              textShadow: "1px 1pxrgb(5, 5, 0)",          // subtle shadow
               letterSpacing: "1px",
               transition: "color 0.3s ease, transform 0.2s ease",
             }}
