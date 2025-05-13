@@ -101,14 +101,14 @@ def get_products(store, disp_field_map):
             a = {"gram": 1, "eighth ounce": 3.5, "quarter ounce": 7, "half ounce": 14, "two gram": 2, "ounce": 28, "price each": 1, "half gram":0.5}
             convert = {"flower": "Flower","extract": "Concentrate","edible": "Edible","pre-roll": "Pre-Rolls","vape": "Vaporizers"}
             
-            blocklisted_sub_types = ["shake"]
+            blocklisted_sub_types = ["shake", "trim"]
             blocklisted_names = ["ready to roll", "untrim", "pre-ground", "preground"]
             name = get_by_path(product, disp_field_map["product_info_map"]["Name"])
             subtype = get_by_path(product, disp_field_map["product_info_map"]["SubType"])
             
-            if any(bad_name.lower() in name.lower() for bad_name in blocklisted_names if not name):
+            if any((bad_name.lower() in name.lower()) for bad_name in blocklisted_names if name):
                 continue
-            if any(bad_sub.lower() in subtype.lower() for bad_sub in blocklisted_sub_types if subtype):
+            if any((bad_sub.lower() in subtype.lower() or bad_sub.lower() == subtype.lower()) for bad_sub in blocklisted_sub_types if subtype):
                 continue
 
             _type = get_by_path(product, disp_field_map["product_info_map"]["Type"])

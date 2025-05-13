@@ -81,6 +81,6 @@ disp_field_map_jane = {
        "Photo_alt": "product_photos.0.urls.medium",
        "Url_slug": "url_slug",
        "Store_url": "id",
-       "SubType": "brand_subtype"
+       "SubType": "kind_subtype"
    }
 }
