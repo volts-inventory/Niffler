@@ -19,21 +19,22 @@ function Navbar() {
       "overflow": "hidden",
       "gap": "1rem",
       "width": "100%",
-      "justify-content": "space-between",
-      "padding": "5px"
+      "justify-content": "space-around",
     }}>
-        <img
-          src="/mynameisjoe.png" 
-          alt="Logo"
-          style={{
-            height: "auto",
-            borderRadius: "20px",
-            maxHeight: "50px"
-          }}
-        />
-      <Link to="/" style={{ fontSize: "1.5rem", color: "#00301e", textDecoration: "none" }}>
-        🌿 Seeking Mary
-      </Link>
+        <div style={{ display: "flex", gap: "0.5rem", justifyContent: "center"}}>
+          <img
+            src="/mynameisjoe.png" 
+            alt="Logo"
+            style={{
+              height: "auto",
+              borderRadius: "20px",
+              maxHeight: "50px"
+            }}
+          />
+        <Link to="/" style={{ fontSize: "1.5rem", color: "#00301e", textDecoration: "none" }}>
+          🌿 Seeking Mary
+        </Link>
+      </div>
       <div style={{ display: "flex", gap: "0.5rem", justifyContent: "center"}}>
           <Link to="/dailydispo"  style={{
               color: "#00301e",
