@@ -31,7 +31,7 @@ function Navbar() {
               maxHeight: "70px"
             }}
           />
-        <Link to="/" style={{ fontSize: "1.5rem", color:  rgb(2, 162, 100), textDecoration: "none" }}>
+        <Link to="/" style={{ fontSize: "1.5rem", color: "#02a264", textDecoration: "none" }}>
           🌿 Seeking Mary
         </Link>
       </div>
