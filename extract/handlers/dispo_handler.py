@@ -2,6 +2,7 @@ from curl_cffi import requests
 import time
 import json
 from datetime import datetime, timezone
+import re
 
 def get_by_path(data, path, sep="."):
     for key in path.split(sep):
@@ -101,9 +102,12 @@ def get_products(store, disp_field_map):
             a = {"gram": 1, "eighth ounce": 3.5, "quarter ounce": 7, "half ounce": 14, "two gram": 2, "ounce": 28, "price each": 1, "half gram":0.5}
             convert = {"flower": "Flower","extract": "Concentrate","edible": "Edible","pre-roll": "Pre-Rolls","vape": "Vaporizers"}
             
-            blocklisted_sub_types = ["shake", "trim"]
+            blocklisted_sub_types = ["shake", "trim", "ground"]
             blocklisted_names = ["ready to roll", "untrim", "pre-ground", "preground"]
             name = get_by_path(product, disp_field_map["product_info_map"]["Name"])
+            # remove g from name
+            get_prefix = lambda s: re.split(r'\s*\d+g', s)[0].strip()
+            name = get_prefix(name)
             subtype = get_by_path(product, disp_field_map["product_info_map"]["SubType"])
             
             if any((bad_name.lower() in name.lower()) for bad_name in blocklisted_names if name):
