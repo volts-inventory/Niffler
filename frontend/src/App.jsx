@@ -31,9 +31,31 @@ function Navbar() {
               maxHeight: "70px"
             }}
           />
-        <Link to="/" style={{ fontSize: "2rem", fontWeight: "800", color: "#02a264", textDecoration: "none" }}>
-          🌿 Seeking Mary
-        </Link>
+          <Link
+            to="/"
+            style={{
+              fontSize: "2rem",
+              color: "#053f28",
+              textDecoration: "underline",
+              textDecorationColor: "#84bfa0",         // soft green underline
+              textUnderlineOffset: "4px",
+              fontStyle: "italic",
+              fontWeight: "800",
+              textShadow: "1px 1px #d1d0be",          // subtle shadow
+              letterSpacing: "1px",
+              transition: "color 0.3s ease, transform 0.2s ease",
+            }}
+            onMouseEnter={(e) => {
+              e.target.style.color = "#0c6b4b";
+              e.target.style.transform = "scale(1.03)";
+            }}
+            onMouseLeave={(e) => {
+              e.target.style.color = "#053f28";
+              e.target.style.transform = "scale(1)";
+            }}
+          >
+            🌿 Seeking Mary
+          </Link>
       </div>
       <div style={{ display: "flex", gap: "0.5rem", justifyContent: "center"}}>
           <Link to="/dailydispo"  style={{
