@@ -17,9 +17,9 @@ function Navbar() {
       border: "1px solid #00301e",
       "border-radius": "12px",
       "overflow": "hidden",
-      "gap": "1rem",
       "width": "100%",
-      "justify-content": "space-around",
+      "justify-content": "space-between",
+      "padding": "5px",
     }}>
         <div style={{ display: "flex", gap: "0.5rem", justifyContent: "center"}}>
           <img
@@ -28,10 +28,10 @@ function Navbar() {
             style={{
               height: "auto",
               borderRadius: "20px",
-              maxHeight: "50px"
+              maxHeight: "70px"
             }}
           />
-        <Link to="/" style={{ fontSize: "1.5rem", color: "#00301e", textDecoration: "none" }}>
+        <Link to="/" style={{ fontSize: "1.5rem", color:  rgb(2, 162, 100), textDecoration: "none" }}>
           🌿 Seeking Mary
         </Link>
       </div>
