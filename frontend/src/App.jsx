@@ -63,7 +63,6 @@ function Navbar() {
         >
           Seeking Mary
         </Link>
-        <p style={{margin: "0 auto", color: "#00301e", justifyContent: "center"}}>"I'll find the cheapest grass locally. I'll tell you HWAT."</p>
       </div>
       <Link to="/dailyproduct"  style={{
           color: "#00301e",

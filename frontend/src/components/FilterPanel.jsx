@@ -84,6 +84,7 @@ export default function FilterPanel({ coords, onSearch }) {
         "text-align": "center"
       }}
     >
+      <p style={{margin: "0 auto", justifyContent: "center", fontSize: "80%"}}>"Yeah man, I tell ya what. That dang ol' internet man. You just go out on there and point and click" </p>
       
       <div style={{ marginBottom: "0.5rem", display: "flex", flexDirection: "column", justifyContent: "space-between", alignItems: "center"}}>
         <label style={labelStyle}>{coords.city} &lt; {form.max_distance_km} miles</label>
