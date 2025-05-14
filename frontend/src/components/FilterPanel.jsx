@@ -100,7 +100,7 @@ export default function FilterPanel({ coords, onSearch }) {
       </div>
 
       <div style={{ marginBottom: "0.5rem", display: "flex", flexDirection: "column", justifyContent: "space-between", alignItems: "center"}}>
-        <label style={labelStyle}>Price - ${form.max_price}</label>
+        <label style={labelStyle}>Price &lt; ${form.max_price}</label>
         <input
           type="range"
           name="max_price"
@@ -113,7 +113,7 @@ export default function FilterPanel({ coords, onSearch }) {
       </div>
       
       <div style={{ marginBottom: "0.5rem", display: "flex", flexDirection: "column", justifyContent: "space-between", alignItems: "center"}}>
-        <label style={labelStyle}>THC - &lt; {form.thc}%</label>
+        <label style={labelStyle}>THC &lt; {form.thc}%</label>
         <input
           type="range"
           name="thc"
