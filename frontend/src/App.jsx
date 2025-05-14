@@ -138,7 +138,7 @@ function ProductPage() {
                 objectFit: "cover",
               }}
             />
-            <strong style={{margin: "0 auto", justifyContent: "center"}}>"Why would anyone do drugs when they can just mow a lawn?" - Hank Hill <br/><br/></strong>
+            <p style={{margin: "0 auto", justifyContent: "center"}}>"Why would anyone do drugs when they can just mow a lawn?"<br/><br/></p>
             <p style={{margin: "0 auto", justifyContent: "center"}}>Search leverages price per weight and other characteristics to find results.</p>
             <strong style={{margin: "0 auto", justifyContent: "center"}}>This site aggregates and links to products from local shops. It does not sell products.</strong>
             <strong style={{margin: "0 auto", justifyContent: "center"}}>Currently only the state of MD is supported.</strong>
