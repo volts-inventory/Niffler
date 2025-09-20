@@ -1,4 +1,4 @@
-# ### Seeking Mary
+# ### Niffler
 
 A small data ingestion and web dashboard that collects nearby store and product information from third‑party sources, stores it in MongoDB, and serves a simple geosearch UI/API via Flask. The system is containerized and orchestrated with Docker Compose.
 
